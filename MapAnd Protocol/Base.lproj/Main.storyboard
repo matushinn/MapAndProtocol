@@ -19,6 +19,10 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-Hq-MFa">
                                 <rect key="frame" x="0.0" y="100" width="414" height="411"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="jfr-Bh-Poe" appends="YES" id="Wrz-jS-R79"/>
+                                </connections>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="住所" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwD-3K-SZn">
                                 <rect key="frame" x="20" y="519" width="374" height="112"/>
@@ -38,10 +42,19 @@
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                     </view>
                     <connections>
+                        <outlet property="addresLabel" destination="qwD-3K-SZn" id="s07-tI-TkU"/>
+                        <outlet property="longPress" destination="jfr-Bh-Poe" id="Zzx-sP-naJ"/>
+                        <outlet property="mapView" destination="aC8-Hq-MFa" id="hkA-uJ-eej"/>
+                        <outlet property="settingBUtton" destination="ctB-2a-qBe" id="WVE-sw-nBX"/>
                         <segue destination="8nF-lj-Ave" kind="presentation" modalPresentationStyle="fullScreen" id="EEV-47-V69"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="jfr-Bh-Poe">
+                    <connections>
+                        <action selector="longPressTap:" destination="BYZ-38-t0r" id="FK6-V4-cBL"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="95.652173913043484" y="81.696428571428569"/>
         </scene>
