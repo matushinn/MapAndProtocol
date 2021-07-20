@@ -36,6 +36,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="設定"/>
+                                <connections>
+                                    <action selector="goToSearchVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XGi-Iv-gBD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -46,7 +49,7 @@
                         <outlet property="longPress" destination="jfr-Bh-Poe" id="Zzx-sP-naJ"/>
                         <outlet property="mapView" destination="aC8-Hq-MFa" id="hkA-uJ-eej"/>
                         <outlet property="settingBUtton" destination="ctB-2a-qBe" id="WVE-sw-nBX"/>
-                        <segue destination="8nF-lj-Ave" kind="presentation" modalPresentationStyle="fullScreen" id="EEV-47-V69"/>
+                        <segue destination="8nF-lj-Ave" kind="presentation" identifier="next" modalPresentationStyle="fullScreen" id="EEV-47-V69"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -96,12 +99,19 @@
                                 <state key="normal" title="OK">
                                     <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="okAction:" destination="8nF-lj-Ave" eventType="touchUpInside" id="cLX-Az-yn4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hsg-GG-nyl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="mZW-GD-crw"/>
+                    <connections>
+                        <outlet property="idoTextField" destination="Kal-Bo-ANo" id="h5U-1f-2jb"/>
+                        <outlet property="keidoTextField" destination="z0t-xE-duD" id="b6s-ua-8sy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rxv-av-MAn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

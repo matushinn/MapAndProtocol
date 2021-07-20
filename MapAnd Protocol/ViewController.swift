@@ -10,7 +10,9 @@ import MapKit
 import CoreLocation
 
 
-class ViewController: UIViewController,UIGestureRecognizerDelegate,CLLocationManagerDelegate {
+class ViewController: UIViewController,UIGestureRecognizerDelegate,CLLocationManagerDelegate,SearchLocationDelegate {
+    
+    
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -63,6 +65,14 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,CLLocationMan
         let geocoder = CLGeocoder()
         let location = CLLocation(latitude: lat, longitude: log)
         
+        /*
+         オプショナルバインディング
+         if 変数 != nil{
+         }
+         if let 変数 = 変数1{
+         値を入れながら処理を書くことができる。
+         }
+         */
         //クロージャー
         //placeMark,errorに値が入ったら中の処理が呼ばれる。中の処理は後での処理になる。
         geocoder.reverseGeocodeLocation(location) { (placeMark, error) in
@@ -79,9 +89,52 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,CLLocationMan
                 }
             }
         }
+      
+    }
+    
+    @IBAction func goToSearchVC(_ sender: Any) {
         
-        
-        
+        //画面遷移
+        performSegue(withIdentifier: "next", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "next" {
+            let nextVC = segue.destination as! NextViewController
+            nextVC.delegate = self
+            
+        }
+    }
+    
+    //任されたデリゲートメソッド
+    func searchLocation(idoValue: String, keidoValue: String) {
+        if idoValue.isEmpty != true && keidoValue.isEmpty != true {
+            let idoString = idoValue
+            let keidoString = keidoValue
+            
+            //緯度、経度からコーディネート
+            let cordinate = CLLocationCoordinate2DMake(Double(idoString)!, Double(keidoString)!)
+            
+            
+            //表示する範囲を指定
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            
+            //領域を指定 ズームイン、ズームアウトを司るパラメーター
+            let region = MKCoordinateRegion(center: cordinate, span: span)
+            
+            
+            //領域をmapViewに設定する
+            mapView.setRegion(region, animated: true)
+            
+            //緯度、経度から住所へ変換
+            convert(lat:Double(idoString)!, log: Double(keidoString)!)
+            
+            //ラベルに表示
+            addresLabel.text = addresssString
+            
+        }else{
+            addresLabel.text = "表示できません"
+        }
     }
 
 }
