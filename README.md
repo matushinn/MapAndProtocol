@@ -9,3 +9,4 @@
 * 緯度、経度からの住所の取得の仕方
 
 
+https://media.giphy.com/media/6wPaGmWup8NtBqy9VT/giphy.gif
